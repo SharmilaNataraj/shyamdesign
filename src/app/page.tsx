@@ -4,6 +4,10 @@ import Portfolio from "@/components/home/Portfolio";
 import Testimonials from "@/components/home/Testimonials";
 import FAQ from "@/components/home/FAQ";
 import CTA from "@/components/home/CTA";
+import Scroll from "@/components/home/scroll";
+
+
+
 
 export default function Home() {
   return (
@@ -14,6 +18,7 @@ export default function Home() {
       <Testimonials />
       <FAQ />
       <CTA />
+      <Scroll/>
     </>
   );
 }

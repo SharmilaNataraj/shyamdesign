@@ -1,51 +1,99 @@
-import React from 'react';
+"use client";
+import React, { useState } from "react";
 
-const Testimonials: React.FC = () => {
-  const testimonials = [
+const Testimonials = () => {
+  const [active, setActive] = useState<number | null>(2); // default open: Web Design
+
+  const services = [
     {
-      name: 'Mr. Kumaravel',
-      position: 'Managing Director at FREHNIG',
-      logo: '/freshing.svg', // Placeholder
-      quote: 'The logo and stationery design for our company, was carried out by the very much to our satisfaction. The designers understood our requirements and worked on our expectations and provided the results. Will work with them again!'
+      title: "Branding & Logo Design",
+      desc:
+        "We offer complete branding & logo design services, creating unique identities that make your business memorable and stand out.",
     },
     {
-      name: 'Sekar',
-      position: 'Proprietor',
-      logo: '/naaval-logo.svg', // Placeholder
-      quote: 'The designs provided by design pluz team is really what i looked for. They look into client convenience and work. so a good designing place.'
+      title: "Graphic Design",
+      desc:
+        "Creative graphic design solutions that communicate your brand message effectively across platforms.",
     },
     {
-      name: 'Pavan ML',
-      position: 'Supply Chain Management',
-      logo: '/designparamapriya.svg', // Placeholder
-      quote: 'In our journey so far, the very first company we have collaborated with and would remember till our brand exists is "Designpluz" as we got our Identity (LOGO) and Faces for our products (Labels) from "Designpluz" team. The entire team were very professional from onboarding till delivery – Not the end of our journey though :)'
+      title: "Web Design",
+      desc:
+        "We provide professional web design services to create responsive, user-friendly websites that support business goals and drive online growth.",
     },
     {
-      name: 'Some Client',
-      position: 'Proprietor',
-      logo: '/client-logo.svg', // Placeholder
-      quote: 'DesignPluz Branding Agency in Coimbatore exceeded my expectations with their creative logo design services. They understood my vision, provided innovative options, and delivered a standout final design. Their professionalism and quality make them my top choice for branding needs.'
-    }
+      title: "SEO",
+      desc:
+        "SEO strategies that improve your search engine rankings, increase traffic, and grow your online presence.",
+    },
   ];
 
+  const toggleItem = (index: number) => {
+    setActive(active === index ? null : index); // open / close same item
+  };
+
   return (
-    <section className="home-testimonials py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h3 className="text-4xl font-bold text-center mb-12 text-black">What Our Clients Say</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="testimonial-card bg-white p-6 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                <img src={testimonial.logo} alt={testimonial.name} className="w-12 h-12 mr-4" />
-                <div>
-                  <h4 className="text-lg font-semibold text-black">{testimonial.name}</h4>
-                  <p className="text-gray-600">{testimonial.position}</p>
-                </div>
-              </div>
-              <p className="text-gray-700 italic">"{testimonial.quote}"</p>
-            </div>
-          ))}
+    <section className="bg-black min-h-screen flex items-center">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20">
+
+        {/* LEFT TEXT */}
+        <div>
+          <h2 className="text-white text-3xl md:text-5xl lg:text-6xl font-light leading-tight">
+            We specialize in Logo & Branding Design, Website Design, and Digital
+            Solutions that help businesses connect with and grow their target
+            audience.
+          </h2>
         </div>
+
+        {/* RIGHT ACCORDION */}
+        <div className="border-t border-white/20">
+          {services.map((item, index) => {
+            const isActive = active === index;
+
+            return (
+              <div
+                key={index}
+                className="border-b border-white/20 py-7"
+              >
+                {/* HEADER */}
+                <div className="flex items-center justify-between">
+                  <h3
+                    className={`text-2xl md:text-3xl font-medium ${
+                      isActive ? "text-yellow-400" : "text-white/50"
+                    }`}
+                  >
+                    {item.title}
+                  </h3>
+
+                  {/* ARROW BUTTON */}
+                  <button
+                    onClick={() => toggleItem(index)}
+                    className={`text-xl transition-all ${
+                      isActive
+                        ? "text-yellow-400 rotate-90"
+                        : "text-white/40"
+                    }`}
+                  >
+                    →
+                  </button>
+                </div>
+
+                {/* BODY */}
+                {isActive && (
+                  <div className="mt-4 max-w-xl">
+                    <p className="text-white/70 text-sm leading-relaxed">
+                      {item.desc}
+                    </p>
+
+                    <button className="mt-4 text-yellow-400 text-sm hover:underline">
+                      Know More
+                    </button>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
       </div>
     </section>
   );

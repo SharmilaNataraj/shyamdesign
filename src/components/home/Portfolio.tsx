@@ -1,66 +1,65 @@
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 
-const Portfolio: React.FC = () => {
-  const portfolioItems = [
-    {
-      title: 'Brand Identity Design',
-      category: 'Branding',
-      image: '/portfolio1.jpg' // Placeholder
-    },
-    {
-      title: 'Logo Design',
-      category: 'Logo',
-      image: '/portfolio2.jpg' // Placeholder
-    },
-    {
-      title: 'Website Design',
-      category: 'Web Design',
-      image: '/portfolio3.jpg' // Placeholder
-    },
-    {
-      title: 'Packaging Design',
-      category: 'Packaging',
-      image: '/portfolio4.jpg' // Placeholder
-    },
-    {
-      title: 'Brochure Design',
-      category: 'Print',
-      image: '/portfolio5.jpg' // Placeholder
-    },
-    {
-      title: 'Business Card Design',
-      category: 'Print',
-      image: '/portfolio6.jpg' // Placeholder
-    }
-  ];
-
+const BrandingPage = () => {
   return (
-    <section className="home-portfolio py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <h3 className="text-4xl font-bold text-center mb-12 text-black">Our Work</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {portfolioItems.map((item, index) => (
-            <div key={index} className="portfolio-card bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
-              <img src={item.image} alt={item.title} className="w-full h-48 object-cover" />
-              <div className="p-4">
-                <h4 className="text-xl font-semibold mb-2 text-black">{item.title}</h4>
-                <p className="text-gray-600">{item.category}</p>
-              </div>
-            </div>
-          ))}
+    <>
+    
+
+      {/* ===== CTA SECTION ===== */}
+      <section className="bg-[#FFE94A] py-24 px-4">
+        <div className="max-w-6xl mx-auto text-center">
+
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-black leading-tight">
+            Let’s discuss your project,
+            <br className="hidden md:block" />
+            contact us today to get started!
+          </h2>
+
+          <div className="mt-12 flex justify-center">
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-3 rounded-full border-2 border-black px-10 py-4 text-lg font-medium text-black transition-all duration-300 hover:bg-black hover:text-[#FFE94A]"
+            >
+              Get in touch
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
+          </div>
+
         </div>
-        <div className="text-center mt-12">
-          <Link
-            href="/portfolio"
-            className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300"
-          >
-            View All Work
-          </Link>
+      </section>
+        {/* ===== CONTENT SECTION ===== */}
+      <section className="bg-white py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+
+          <h1 className="text-4xl md:text-6xl font-semibold text-black leading-tight">
+            Creative Branding & Logo Design Company <br />
+            in Coimbatore
+          </h1>
+
+          <p className="mt-8 text-base md:text-lg text-black/80 leading-relaxed max-w-5xl">
+            Designpluz Branding Services is a trusted branding and logo design
+            company in Coimbatore, creating impactful brand identities that
+            match your vision and meet global standards. Our brand strategy is
+            focused on understanding the essence of your business and converting
+            it into designs that effectively convey your message to the
+            audience. No matter if you're just a startup, a small business, or
+            an enterprise, we create custom branding solutions that fit your
+            needs and help you grow.
+            <br /><br />
+            Our logo designs not only look great but also show what your brand
+            is really about. We follow a thoughtful logo creation process that
+            includes research, concept development, and final delivery of
+            high-quality, scalable assets that reflect your visual brand
+            identity.
+          </p>
+
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
-export default Portfolio;
+export default BrandingPage;
